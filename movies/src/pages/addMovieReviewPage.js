@@ -1,6 +1,6 @@
 import React from "react";
-import PageTemplate from "../components/templateMoviePage";
-import ReviewForm from "../components/reviewForm";
+import PageTemplate from "../components/templatePage/templateMoviePage";
+import ReviewForm from "../components/movie/reviewForm";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getMovie } from "../api/tmdb-api";

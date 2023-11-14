@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Header from "../headerMovieList";
-import FilterCard from "../filterMoviesCard";
-import MovieList from "../movieList";
+import Header from "../../movie/headerMovieList";
+import FilterCard from "../../movie/filterMoviesCard";
+import MovieList from "../../movie/movieList";
 import Grid from "@mui/material/Grid";
 
 function MovieListPageTemplate({ movies, title, action }) {
