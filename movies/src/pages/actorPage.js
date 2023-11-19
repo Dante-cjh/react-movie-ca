@@ -3,6 +3,7 @@ import { getActors } from "../api/tmdb-api";
 import ActorListPageTemplate from '../components/templatePage/templateActorListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
+import AddToStar from "../components/cardIcons/addToStar";
 
 const ActorPage = (props) => {
 
@@ -20,6 +21,9 @@ const ActorPage = (props) => {
     return (
         <ActorListPageTemplate
             actors={actors}
+            action={(actor) => {
+                return <AddToStar actor={actor} />
+            }}
         />
     )
 }

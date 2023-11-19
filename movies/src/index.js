@@ -15,6 +15,7 @@ import ToWatchMoviesPage from './pages/toWatchMoviesPage';
 import ActorPage from "./pages/actorPage";
 import ActorDetailPage from "./pages/actorDetailsPage";
 import MovieTrendingPage from "./pages/movieTrendingPage";
+import ActorsContextProvider from "./contexts/actorsContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,19 +33,21 @@ const App = () => {
       <BrowserRouter>
         <SiteHeader />
         <MoviesContextProvider>
-        <Routes>
-          <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
-          <Route path="/movies/upcoming" element={<UpcomingMoviePage />} />
-          <Route path="/movies/trending" element={<MovieTrendingPage />} />
-          <Route path="/movies/toWatch" element={<ToWatchMoviesPage />} />
-          <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
-          <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
-          <Route path="/movies/:id" element={<MoviePage />} />
-          <Route path="/" element={<HomePage />} />
-          <Route path="*" element={ <Navigate to="/" /> } />
-          <Route path="/actor" element={<ActorPage />} />
-          <Route path="/actors/:id" element={<ActorDetailPage />} />
-        </Routes>
+          <ActorsContextProvider>
+            <Routes>
+              <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
+              <Route path="/movies/upcoming" element={<UpcomingMoviePage />} />
+              <Route path="/movies/trending" element={<MovieTrendingPage />} />
+              <Route path="/movies/toWatch" element={<ToWatchMoviesPage />} />
+              <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
+              <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
+              <Route path="/movies/:id" element={<MoviePage />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="*" element={ <Navigate to="/" /> } />
+              <Route path="/actor" element={<ActorPage />} />
+              <Route path="/actors/:id" element={<ActorDetailPage />} />
+            </Routes>
+          </ActorsContextProvider>
         </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
