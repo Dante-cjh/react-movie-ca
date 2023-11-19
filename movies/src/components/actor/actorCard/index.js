@@ -19,13 +19,6 @@ const ActorCard = ({actor, action}) => {
         actor.favorite = false
     }
 
-    // 将作品标题连接成字符串，最后一个前用“and”代替逗号
-    // const titles = actor.known_for
-    //     .map(work => work.title)
-    //     .slice(0, 3) // 只取前三个作品
-    //     .join(', ')
-    //     .replace(/, (?=[^,]*$)/, ' and '); // 正则表达式用于找到最后一个逗号并替换成“and”
-
     return (
         <Card sx={{maxWidth: 345}}>
             <CardHeader
@@ -55,12 +48,6 @@ const ActorCard = ({actor, action}) => {
                         {action(actor)}
                         {actor.name}
                     </Typography>
-                    {/*<Typography variant="subtitle1" color="text.secondary">*/}
-                    {/*    Known for: {actor.known_for_department}*/}
-                    {/*</Typography>*/}
-                    {/*<Typography variant="body2" color="text.secondary">*/}
-                    {/*    {titles}*/}
-                    {/*</Typography>*/}
                 </CardContent>
             </CardActions>
         </Card>
