@@ -20,11 +20,11 @@ const ActorCard = ({actor, action}) => {
     }
 
     // 将作品标题连接成字符串，最后一个前用“and”代替逗号
-    const titles = actor.known_for
-        .map(work => work.title)
-        .slice(0, 3) // 只取前三个作品
-        .join(', ')
-        .replace(/, (?=[^,]*$)/, ' and '); // 正则表达式用于找到最后一个逗号并替换成“and”
+    // const titles = actor.known_for
+    //     .map(work => work.title)
+    //     .slice(0, 3) // 只取前三个作品
+    //     .join(', ')
+    //     .replace(/, (?=[^,]*$)/, ' and '); // 正则表达式用于找到最后一个逗号并替换成“and”
 
     return (
         <Card sx={{maxWidth: 345}}>
@@ -38,11 +38,10 @@ const ActorCard = ({actor, action}) => {
                 }
                 title={
                     <Typography variant="h5" component="p">
-                        {"Chase the Star!"}
+                        {actor.name}
                     </Typography>
                 }
             />
-            <CardActions>
                 <Link to={`/actors/${actor.id}`}>
                     <CardMedia
                         component="img"
@@ -50,19 +49,18 @@ const ActorCard = ({actor, action}) => {
                         alt={actor.name}
                     />
                 </Link>
-            </CardActions>
             <CardActions>
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography variant="subtitle1" color="text.sendary">
                         {action(actor)}
                         {actor.name}
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
-                        Known for: {actor.known_for_department}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        {titles}
-                    </Typography>
+                    {/*<Typography variant="subtitle1" color="text.secondary">*/}
+                    {/*    Known for: {actor.known_for_department}*/}
+                    {/*</Typography>*/}
+                    {/*<Typography variant="body2" color="text.secondary">*/}
+                    {/*    {titles}*/}
+                    {/*</Typography>*/}
                 </CardContent>
             </CardActions>
         </Card>
