@@ -4,6 +4,7 @@ import {Container} from "@mui/material";
 import KnownFor from "../../actor/KnownFor";
 import ActorDetails from "../../actor/actorDetails";
 import Biography from "../../actor/biography";
+import ActorHeader from "../../actor/headerActor";
 
 
 const TemplateActorPage = ({actorDetails, movieCredits}) => {
@@ -11,17 +12,21 @@ const TemplateActorPage = ({actorDetails, movieCredits}) => {
     const knownFor = movieCredits.cast;
     const biography = actorDetails.biography;
     return (
-        <Container>
-            <Grid container spacing={4}>
-                <Grid item xs={12} md={4}>
-                    <ActorDetails actor={actorDetails} />
+        <>
+            <ActorHeader actor={actorDetails} />
+            <Container>
+                <Grid container spacing={4}>
+                    <Grid item xs={12} md={4}>
+                        <ActorDetails actor={actorDetails} />
+                    </Grid>
+                    <Grid item xs={12} md={8}>
+                        <Biography bio={biography} />
+                        <KnownFor knownFor={knownFor} />
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={8}>
-                    <Biography bio={biography} />
-                    <KnownFor knownFor={knownFor} />
-                </Grid>
-            </Grid>
-        </Container>
+            </Container>
+        </>
+
     );
 };
 
