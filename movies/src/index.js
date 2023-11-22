@@ -43,11 +43,13 @@ const App = () => {
               <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
               <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
               <Route path="/movies/:id" element={<MoviePage />} />
+              <Route path="/actors/:actorId/movies/:id" element={<MoviePage />} />
               <Route path="/" element={<HomePage />} />
               <Route path="*" element={ <Navigate to="/" /> } />
               <Route path="/actor" element={<ActorPage />} />
               <Route path="/actor/favorites" element={<FavoriteActorsPage />} />
-              <Route path="/actors/:id" element={<ActorDetailPage />} />
+              <Route path="/actors/:actorId" element={<ActorDetailPage />} />
+              <Route path="/movies/:movieId/actors/:actorId" element={<ActorDetailPage />} />
             </Routes>
           </ActorsContextProvider>
         </MoviesContextProvider>

@@ -3,14 +3,14 @@ import {Grid, Card, CardMedia, CardContent, Typography, CardActionArea} from '@m
 import {Link} from "react-router-dom";
 import img from "../../../images/film-poster-placeholder.png";
 
-const KnownFor = ({knownFor}) => {
+const KnownFor = ({actorId,knownFor}) => {
     return (
         <Grid container spacing={2}>
             {knownFor.map((film) => (
                 <Grid item xs={6} md={3} key={film.id}>
                     <Card>
                         <CardActionArea>
-                            <Link to={`/movies/${film.id}`}>
+                            <Link to={`/actors/${actorId}/movies/${film.id}`}>
                                 <CardMedia
                                     component="img"
                                     height="140"

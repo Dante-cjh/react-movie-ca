@@ -7,14 +7,14 @@ import Spinner from '../components/spinner';
 
 
 const ActorDetailPage = () => {
-    const { id } = useParams();
+    const { actorId } = useParams();
     // 获取演员详细信息
     const {
         data: actorDetails,
         isLoading: isActorDetailsLoading,
         isError: isActorDetailsError,
         error: actorDetailsError,
-    } = useQuery(["actor", { id: id }], getActor);
+    } = useQuery(["actor", { id: actorId }], getActor);
 
     // 获取演员的电影作品列表
     const {
@@ -22,7 +22,7 @@ const ActorDetailPage = () => {
         isLoading: isMovieCreditsLoading,
         isError: isMovieCreditsError,
         error: movieCreditsError,
-    } = useQuery(["movieCredits", { id: id }], getActorFilmCredits);
+    } = useQuery(["movieCredits", { id: actorId }], getActorFilmCredits);
 
     if (isActorDetailsLoading || isMovieCreditsLoading) {
         return <Spinner />;

@@ -21,7 +21,7 @@ const TemplateActorPage = ({actorDetails, movieCredits}) => {
                     </Grid>
                     <Grid item xs={12} md={8}>
                         <Biography bio={biography} />
-                        <KnownFor knownFor={knownFor} />
+                        <KnownFor actorId={actorDetails.id} knownFor={knownFor} />
                     </Grid>
                 </Grid>
             </Container>
