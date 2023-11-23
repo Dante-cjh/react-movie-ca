@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import {Button, TextField, Box, Typography} from '@mui/material';
 
 const LoginForm = ({ onLogin }) => {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
     const handleSubmit = (event) => {
@@ -26,7 +26,6 @@ const LoginForm = ({ onLogin }) => {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
                 autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -39,7 +38,6 @@ const LoginForm = ({ onLogin }) => {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />

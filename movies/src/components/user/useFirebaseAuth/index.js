@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {initializeApp} from 'firebase/app';
 import {getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth';
-import {createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 
 // Your Firebase configuration object
 const firebaseConfig = {
@@ -38,13 +38,9 @@ export const useFirebaseAuth = () => {
         return signOut(auth);
     };
 
-    const signUp = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password);
-    };
-
     const signUpWithGoogle = () => {
         return signInWithPopup(auth, googleProvider);
     };
 
-    return {user, login, logout, signUp, signUpWithGoogle};
+    return {user, login, logout, signUpWithGoogle};
 };
