@@ -1,35 +1,46 @@
 import React from "react";
-import { getMovies } from "../api/tmdb-api";
+import {getMovies} from "../api/tmdb-api";
 import PageTemplate from "../components/templatePage/templateMovieListPage";
-import { useQuery } from 'react-query';
+import {useQuery} from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
+import {Pagination, Stack} from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 const HomePage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
+    const [page, setPage] = React.useState(1);
+    const {data, error, isLoading, isError} = useQuery(['discover', {page: page}], getMovies)
 
-  if (isLoading) {
-    return <Spinner />
-  }
+    if (isLoading) {
+        return <Spinner/>
+    }
 
-  if (isError) {
-    return <h1>{error.message}</h1>
-  }  
-  const movies = data.results;
+    if (isError) {
+        return <h1>{error.message}</h1>
+    }
+    const movies = data.results;
 
-  // Redundant, but necessary to avoid app crashing.
-  const favorites = movies.filter(m => m.favorite)
-  localStorage.setItem('favorites', JSON.stringify(favorites))
+    const handleChange = (event, value) => {
+        setPage(value);
+    };
 
-  return (
-    <PageTemplate
-      title="Discover Movies"
-      movies={movies}
-      action={(movie) => {
-        return <AddToFavoritesIcon movie={movie} />
-      }}
-    />
-  );
+    // Redundant, but necessary to avoid app crashing.
+    const favorites = movies.filter(m => m.favorite)
+    localStorage.setItem('favorites', JSON.stringify(favorites))
+
+    return (
+        <PageTemplate
+            title="Discover Movies"
+            movies={movies}
+            action={(movie) => {
+                return <AddToFavoritesIcon movie={movie}/>
+            }}
+        >
+            <Pagination count={100} defaultPage={6} boundaryCount={2}
+                        showFirstButton showLastButton color="primary"
+                        page={page} size="large" onChange={handleChange}/>
+        </PageTemplate>
+    );
 };
 export default HomePage;
