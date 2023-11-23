@@ -21,7 +21,7 @@ const MovieCredits = ({movieId}) => {
         return <h1>{error.message}</h1>;
     }
 
-    const actors = credits.crew;
+    const actors = credits.cast;
 
     return (
         <Grid container spacing={2} sx={{paddingTop: 2}}>
