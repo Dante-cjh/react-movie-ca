@@ -5,7 +5,7 @@ import ActorList from "../../actor/actorList";
 import LoginCard from "../../user/LoginCard";
 import FilterCard from "../../actor/filterActorsCard";
 
-function ActorListPageTemplate({actors, action}) {
+function ActorListPageTemplate({actors, action, children}) {
     const [nameFilter, setNameFilter] = useState("");
 
     let displayedActors = actors
@@ -31,6 +31,9 @@ function ActorListPageTemplate({actors, action}) {
                     />
                 </Grid>
                 <ActorList actors={displayedActors} action={action}></ActorList>
+            </Grid>
+            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                {children}
             </Grid>
         </Grid>
     );
