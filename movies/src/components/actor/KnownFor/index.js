@@ -1,9 +1,10 @@
 import React from 'react';
-import {Grid, Card, CardMedia, CardContent, Typography, CardActionArea, ImageListItemBar} from '@mui/material';
+import {Grid, ImageListItemBar} from '@mui/material';
 import {Link} from "react-router-dom";
 import img from "../../../images/film-poster-placeholder.png";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageList from "@mui/material/ImageList";
+import MiniMovieCard from "../../movie/miniFilmCard";
 
 const KnownFor = ({actorId, knownFor}) => {
     return (
@@ -19,8 +20,7 @@ const KnownFor = ({actorId, knownFor}) => {
                 {knownFor.map((film) => (
                     <ImageListItem>
                         <Link to={`/actors/${actorId}/movies/${film.id}`}>
-                            <img src={film.poster_path ? `https://image.tmdb.org/t/p/w200${film.poster_path}` : img}/>
-                            <ImageListItemBar title={film.title}/>
+                            <MiniMovieCard movie={film} />
                         </Link>
                     </ImageListItem>
                 ))}
